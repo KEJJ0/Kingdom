@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>✨ مملكة هنودة ✨</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ✨ Particles Background -->
+  <div id="particles-bg"></div>
+
+  <!-- ============ SCREEN: WELCOME ============ -->
+  <div id="screen-welcome" class="screen active">
+    <div class="welcome-crown">👑</div>
+    <div class="welcome-title">
+      <span class="gold-text">مملكة</span>
+      <br/>
+      <span class="pink-glow">هنودة</span>
+    </div>
+    <div class="welcome-subtitle">لعبة مُهداة بكل الحب 💖</div>
+    <div class="stars-row">⭐ ⭐ ⭐</div>
+    <button class="btn-main" id="btn-start">
+      <span>ابدئي المغامرة</span>
+      <div class="btn-shine"></div>
+    </button>
+    <div class="welcome-deco">✨💎✨</div>
+  </div>
+
+  <!-- ============ SCREEN: MAP ============ -->
+  <div id="screen-map" class="screen">
+    <div class="map-header">
+      <div class="map-title">🗺️ خريطة المملكة</div>
+      <div class="score-badge">💎 <span id="total-score">0</span></div>
+    </div>
+    <div class="map-grid">
+      <div class="map-level unlocked" data-level="1" id="map-lv1">
+        <div class="level-icon">🌸</div>
+        <div class="level-name">حديقة الزهور</div>
+        <div class="level-stars" id="stars-lv1">☆☆☆</div>
+      </div>
+      <div class="map-path">→</div>
+      <div class="map-level locked" data-level="2" id="map-lv2">
+        <div class="level-icon">💎</div>
+        <div class="level-name">كنز الجواهر</div>
+        <div class="level-stars" id="stars-lv2">☆☆☆</div>
+      </div>
+      <div class="map-path">→</div>
+      <div class="map-level locked" data-level="3" id="map-lv3">
+        <div class="level-icon">🦋</div>
+        <div class="level-name">أمسكي الفراشات</div>
+        <div class="level-stars" id="stars-lv3">☆☆☆</div>
+      </div>
+      <div class="map-path map-path-down">↓</div>
+      <div class="map-level locked" data-level="4" id="map-lv4">
+        <div class="level-icon">🏰</div>
+        <div class="level-name">قصر هنودة</div>
+        <div class="level-stars" id="stars-lv4">☆☆☆</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SCREEN: LEVEL 1 - Memory Flowers ============ -->
+  <div id="screen-level1" class="screen">
+    <div class="level-header">
+      <button class="btn-back" onclick="goToMap()">⬅</button>
+      <div class="level-title">🌸 حديقة الزهور</div>
+      <div class="level-hud">
+        <span>⏱️ <span id="lv1-timer">30</span></span>
+        <span>❤️ <span id="lv1-lives">3</span></span>
+      </div>
+    </div>
+    <div class="level-desc">اضغطي على الزهور المتطابقة! 🌺</div>
+    <div id="flower-board" class="card-board"></div>
+    <div id="lv1-result" class="result-overlay hidden"></div>
+  </div>
+
+  <!-- ============ SCREEN: LEVEL 2 - Gem Catcher ============ -->
+  <div id="screen-level2" class="screen">
+    <div class="level-header">
+      <button class="btn-back" onclick="goToMap()">⬅</button>
+      <div class="level-title">💎 كنز الجواهر</div>
+      <div class="level-hud">
+        <span>⏱️ <span id="lv2-timer">30</span></span>
+        <span>💎 <span id="lv2-score">0</span></span>
+      </div>
+    </div>
+    <div class="level-desc">اصطادي الجواهر، تجنبي القنابل! 💣</div>
+    <div id="gem-arena" class="gem-arena">
+      <div id="gem-basket" class="gem-basket">🧺</div>
+    </div>
+    <div id="lv2-result" class="result-overlay hidden"></div>
+  </div>
+
+  <!-- ============ SCREEN: LEVEL 3 - Butterfly Tap ============ -->
+  <div id="screen-level3" class="screen">
+    <div class="level-header">
+      <button class="btn-back" onclick="goToMap()">⬅</button>
+      <div class="level-title">🦋 رقصة الفراش</div>
+      <div class="level-hud">
+        <span>⏱️ <span id="lv3-timer">25</span></span>
+        <span>🦋 <span id="lv3-score">0</span></span>
+      </div>
+    </div>
+    <div class="level-desc">اضغطي على الفراشات قبل أن تطير! 💨</div>
+    <div id="butterfly-arena" class="butterfly-arena"></div>
+    <div id="lv3-result" class="result-overlay hidden"></div>
+  </div>
+
+  <!-- ============ SCREEN: LEVEL 4 - Word Quiz ============ -->
+  <div id="screen-level4" class="screen">
+    <div class="level-header">
+      <button class="btn-back" onclick="goToMap()">⬅</button>
+      <div class="level-title">🏰 قصر هنودة</div>
+      <div class="level-hud">
+        <span>❓ <span id="lv4-qnum">1</span>/5</span>
+        <span>⭐ <span id="lv4-score">0</span></span>
+      </div>
+    </div>
+    <div id="quiz-container" class="quiz-container"></div>
+    <div id="lv4-result" class="result-overlay hidden"></div>
+  </div>
+
+  <!-- ============ SCREEN: FINAL WIN ============ -->
+  <div id="screen-final" class="screen">
+    <div class="final-fireworks" id="fireworks"></div>
+    <div class="final-crown">👑</div>
+    <div class="final-title">أحسنتِ يا هنودة!</div>
+    <div class="final-subtitle">أكملتِ جميع مراحل المملكة 🎉</div>
+    <div class="final-score-box">
+      <div class="final-score-label">مجموع نقاطك</div>
+      <div class="final-score-val" id="final-total">0</div>
+      <div class="final-stars" id="final-stars"></div>
+    </div>
+    <div class="final-message">
+      💖 أنتِ أميرة هذه المملكة إلى الأبد 💖
+    </div>
+    <button class="btn-main" onclick="restartGame()">
+      <span>🔄 العب مجدداً</span>
+      <div class="btn-shine"></div>
+    </button>
+  </div>
+
+  <!-- ============ SCREEN: LEVEL COMPLETE ============ -->
+  <div id="screen-level-complete" class="screen">
+    <div class="lc-stars" id="lc-stars-display"></div>
+    <div class="lc-title" id="lc-title">أحسنتِ! 🎉</div>
+    <div class="lc-score">نقاطك: <span id="lc-score-val">0</span></div>
+    <div class="lc-msg" id="lc-msg"></div>
+    <button class="btn-main" id="btn-next-level">
+      <span>التالي ➡</span>
+      <div class="btn-shine"></div>
+    </button>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
