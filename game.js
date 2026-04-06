@@ -125,9 +125,9 @@ function clearAllTimers() {
 
 // ============ LEVEL COMPLETE HANDLER ============
 function completeLevelScreen(levelIdx, score, starsEarned, msgs) {
-  const titles = ['أحسنتِ! 🌸','رائعة! 💎','مذهلة! 🦋','الملكة! 👑'];
+  const titles = ['شطورة! 🌸','عفية! 💎','كفو عليك! 🦋','الملكة! 👑'];
   $('lc-stars-display').textContent = getStarStr(starsEarned);
-  $('lc-title').textContent = titles[levelIdx] || 'رائعة!';
+  $('lc-title').textContent = titles[levelIdx] || 'بطلة!';
   $('lc-score-val').textContent = score;
   $('lc-msg').textContent = msgs || '';
 
@@ -253,7 +253,7 @@ function startLv1Timer() {
 function endLevel1(won) {
   const score = won ? Math.max(0, lv1Seconds * 5 + lv1Lives * 20 + 50) : Math.max(0, lv1Matched * 15);
   const stars = won ? (lv1Seconds > 20 ? 3 : lv1Seconds > 10 ? 2 : 1) : (lv1Matched >= 6 ? 1 : 0);
-  showResultOverlay('lv1-result', won, () => completeLevelScreen(0, score, stars, won ? '✨   عاشت الذكية ثنّش!' : '💪 حاولي مرة أخرى'));
+  showResultOverlay('lv1-result', won, () => completeLevelScreen(0, score, stars, won ? '✨   عاشت الذكية قنّش!' : '💪 حاولي مرة أخرى'));
 }
 
 function showResultOverlay(id, won, then) {
@@ -262,7 +262,7 @@ function showResultOverlay(id, won, then) {
   el.innerHTML = `
     <div class="result-emoji">${won ? '🎉' : '💔'}</div>
     <div class="result-text">${won ? 'عفية!' : 'حاولي مجدداً'}</div>
-    <div class="result-sub">${won ? ' شطورة بنتي !' : 'لا بأس، المرة القادمة!'}</div>
+    <div class="result-sub">${won ? 'شطورة بنتي !' : 'لا بأس، المرة القادمة!'}</div>
   `;
   setTimeout(then, 1400);
 }
@@ -408,7 +408,7 @@ function endLevel2() {
   const score = lv2Score;
   const stars = score >= 80 ? 3 : score >= 40 ? 2 : score >= 10 ? 1 : 0;
   showResultOverlay('lv2-result', score >= 10, () =>
-    completeLevelScreen(1, score, stars, score >= 80 ? '💎 صائدة جواهر محترفة!' : score >= 40 ? '✨ كفو على بنيتي !' : '💪 جربي مجدداً!'));
+    completeLevelScreen(1, score, stars, score >= 80 ? '💎صائدة جواهر محترفة!' : score >= 40 ? '✨كفو على بنيتي !' : '💪 جربي مجدداً!'));
 }
 
 // ==========================================
@@ -500,7 +500,7 @@ function endLevel3() {
   const score = lv3Score * 8;
   const stars = lv3Score >= 18 ? 3 : lv3Score >= 10 ? 2 : lv3Score >= 4 ? 1 : 0;
   showResultOverlay('lv3-result', lv3Score >= 4, () =>
-    completeLevelScreen(2, score, stars, lv3Score >= 18 ? '🦋   فديت السريع أنا!' : lv3Score >= 10 ? '✨   فراشاتك في أمان يافراشتي!' : '💕 جربي أسرع!'));
+    completeLevelScreen(2, score, stars, lv3Score >= 18 ? '🦋فديت السريع أنا!' : lv3Score >= 10 ? '✨فراشاتك في أمان يافراشتي!' : '💕 جربي أسرع!'));
 }
 
 // ==========================================
